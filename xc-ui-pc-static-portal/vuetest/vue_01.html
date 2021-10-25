@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一个vue页面</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    {{name}}
+</div>
+</body>
+<script>
+    var VM = new Vue({
+        el: "#app",
+        data: {
+            name: "曾经有一段真挚的爱情"
+        }
+    });
+</script>
+</html>

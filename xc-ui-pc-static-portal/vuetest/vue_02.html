@@ -6,10 +6,12 @@
 </head>
 <body>
 <div id="app">
-    hello world
+    <!--{{name}}-->
+    <span v-text="name"></span>
     <input type="text" v-model="num1"/> +
     <input type="text" v-model="num2"/> =
-    {{Number.parseInt(num1)+Number.parseInt(num2)}}
+    <!--{{Number.parseInt(num1)+Number.parseInt(num2)}}-->
+    <span v-text="Number.parseInt(num1)+Number.parseInt(num2)"></span>
     <input type="button" value="计算">
 </div>
 </body>
@@ -18,6 +20,7 @@
     var VM = new Vue({
         el: '#app',
         data: {
+            name: '黑马程序员',
             num1: 1,
             num2: 1,
         }

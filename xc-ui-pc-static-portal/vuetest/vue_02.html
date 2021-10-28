@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算</title>
+</head>
+<body>
+<div id="app">
+    hello world
+    <input type="text" v-model="num1"/> +
+    <input type="text" v-model="num2"/> =
+    {{Number.parseInt(num1)+Number.parseInt(num2)}}
+    <input type="button" value="计算">
+</div>
+</body>
+<script src="vue.min.js"></script>
+<script>
+    var VM = new Vue({
+        el: '#app',
+        data: {
+            num1: 1,
+            num2: 1,
+        }
+    });
+</script>
+</html>

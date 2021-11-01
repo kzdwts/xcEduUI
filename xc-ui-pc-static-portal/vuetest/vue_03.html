@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(item,index) in list" v-if="index % 2 == 1" :key="index">{{index}} --- {{item}}</li>
+        <li v-for="(value,key) in user">{{key}} --- {{value}}</li>
+        <li v-for="(item,index) in userlist" :key="item.user.uname">
+            <div v-if="item.user.uname=='九黎小康'" style="background: pink">
+                {{index}} --- {{item.user.uname}} -- {{item.user.age}}
+            </div>
+            <div v-else="">
+                {{index}} --- {{item.user.uname}} -- {{item.user.age}}
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            list: ['李子木', '陆志航', '储小姣', '王丽丽', '巨梦洁', '钱梦婷'],
+            user: {uname: '九黎小康', age: 27},
+            userlist: [
+                {user: {uname: '九黎小康', age: 27}},
+                {user: {uname: '风青霞', age: 23}}
+            ]
+        }
+    });
+</script>
+
+</html>

@@ -5,6 +5,7 @@ module.exports = {
         path: __dirname + '/dist',
         filename: 'build.js'
     },
+    devtool: 'eval-source-map', // debug调试
     plugins: [
         new htmlwp({
             title: '首页',

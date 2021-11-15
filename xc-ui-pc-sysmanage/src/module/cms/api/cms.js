@@ -12,8 +12,9 @@ let apiUrl = sysConfig.xcApiUrlPre;
  * @returns {Promise | Promise<unknown>}
  */
 export const page_list = (page, size, params) => {
+  let query = querystring.stringify(params)
   // 调用接口查询
-  return http.requestQuickGet(apiUrl + '/cms/page/list/' + page + '/' + size)
+  return http.requestQuickGet(apiUrl + '/cms/page/list/' + page + '/' + size + '?' + query)
 }
 
 /**

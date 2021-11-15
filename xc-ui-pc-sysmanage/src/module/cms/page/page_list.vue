@@ -67,14 +67,14 @@ export default {
   methods: {
     querySiteSelectList: function () {
       cmsApi.site_list().then((res) => {
-        debugger
         console.log(res)
         this.siteList = res
       })
     },
     query: function () {
       // alert('查询')
-      cmsApi.page_list(this.params.page, this.params.size, "").then((res) => {
+      cmsApi.page_list(this.params.page, this.params.size, this.params).then((res) => {
+        console.log(res)
         this.list = res.queryResult.list
         this.total = res.queryResult.total
       })

@@ -1,7 +1,20 @@
 <template>
   <div>
     <!--  编写页面静态部分，即view部分-->
-    <el-button type="primary" size="small" @click="query">查询</el-button>
+    <el-form :model="params">
+      站点：
+      <el-select v-model="params.siteId" placeholder="请选择站点">
+        <el-option
+          v-for="item in siteList"
+          :key="item.siteId"
+          :label="item.siteName"
+          :value="item.siteId">
+        </el-option>
+      </el-select>
+      页面别名：
+      <el-input v-model="params.pageAliase" placeholder="请输入页面别名" clearable style="width: 100px;"></el-input>
+      <el-button type="primary" size="small" @click="query">查询</el-button>
+    </el-form>
     <el-table
       :data="list"
       stripe
@@ -40,14 +53,25 @@ export default {
   data() {
     return {
       list: [],
+      siteList: [],
       total: 0,
       params: {
         page: 1,
-        size: 10
+        size: 10,
+        siteName: '',
+        siteId: '',
+        pageAliase: ''
       }
     }
   },
   methods: {
+    querySiteSelectList: function () {
+      cmsApi.site_list().then((res) => {
+        debugger
+        console.log(res)
+        this.siteList = res
+      })
+    },
     query: function () {
       // alert('查询')
       cmsApi.page_list(this.params.page, this.params.size, "").then((res) => {
@@ -61,6 +85,10 @@ export default {
     }
   },
   mounted() {
+    // 初始化站点列表
+    this.querySiteSelectList()
+
+    // 默认查询页面
     this.query()
   }
 }

@@ -14,6 +14,9 @@
       页面别名：
       <el-input v-model="params.pageAliase" placeholder="请输入页面别名" clearable style="width: 100px;"></el-input>
       <el-button type="primary" size="small" @click="query">查询</el-button>
+      <router-link class="mui-tab-item" :to="{path:'/cms/page/add', query:{page: this.params.page, siteId: this.params.siteId}}">
+        <el-button type="primary" size="small">新增页面</el-button>
+      </router-link>
     </el-form>
     <el-table
       :data="list"
@@ -84,7 +87,11 @@ export default {
       this.query()
     }
   },
-  mounted() {
+  created() { // created是页面还没有渲染之前，执行的动作
+    this.params.page = Number.parseInt(this.$route.query.page || 1)
+    this.params.siteId = this.$route.query.siteId || ''
+  },
+  mounted() { // mounted是页面渲染完成之后，执行的动作
     // 初始化站点列表
     this.querySiteSelectList()
 

@@ -14,7 +14,8 @@
       页面别名：
       <el-input v-model="params.pageAliase" placeholder="请输入页面别名" clearable style="width: 100px;"></el-input>
       <el-button type="primary" size="small" @click="query">查询</el-button>
-      <router-link class="mui-tab-item" :to="{path:'/cms/page/add', query:{page: this.params.page, siteId: this.params.siteId}}">
+      <router-link class="mui-tab-item"
+                   :to="{path:'/cms/page/add', query:{page: this.params.page, siteId: this.params.siteId}}">
         <el-button type="primary" size="small">新增页面</el-button>
       </router-link>
     </el-form>
@@ -35,6 +36,15 @@
       <el-table-column prop="pagePhysicalPath" label="物理路径" width="250">
       </el-table-column>
       <el-table-column prop="pageCreateTime" label="创建人" width="250">
+      </el-table-column>
+      <el-table-column label="操作" width="80">
+        <template slot-scope="page">
+          <el-button
+            size="small" type="text"
+            @click="edit(page.row.pageId)">编辑
+            {{page.row.pageId}}
+          </el-button>
+        </template>
       </el-table-column>
     </el-table>
     <el-pagination
@@ -85,6 +95,16 @@ export default {
     changePage: function (page) {
       this.params.page = page
       this.query()
+    },
+    // 编辑
+    edit: function (pageId) {
+      console.log(pageId)
+      this.$router.push({
+        path: '/cms/page/edit/' + pageId, query: {
+          page: this.params.page,
+          siteId: this.params.siteId
+        }
+      })
     }
   },
   created() { // created是页面还没有渲染之前，执行的动作

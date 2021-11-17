@@ -28,6 +28,26 @@ export const page_add = (params) => {
 }
 
 /**
+ * 获取页面详情
+ * @param params
+ * @returns {Promise | Promise<unknown>}
+ */
+export const page_findById = (pageId) => {
+  // 调用接口新增
+  return http.requestQuickGet(apiUrl + '/cms/page/findById/' + pageId)
+}
+
+/**
+ * 编辑页面信息
+ * @param params
+ * @returns {Promise | Promise<unknown>}
+ */
+export const page_edit = (pageId, params) => {
+  // 调用接口更新
+  return http.requestPut(apiUrl + '/cms/page/edit/' + pageId, params)
+}
+
+/**
  * 获取站点列表
  * @returns {Promise | Promise<unknown>}
  */
@@ -42,6 +62,8 @@ export const site_list = () => {
 export const template_list = () => {
   return http.requestQuickGet(apiUrl + '/cms/template/listAll')
 }
+
+
 
 
 

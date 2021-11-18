@@ -38,6 +38,16 @@ export const page_findById = (pageId) => {
 }
 
 /**
+ * 删除页面
+ * @param params
+ * @returns {Promise | Promise<unknown>}
+ */
+export const page_del = (pageId) => {
+  // 调用接口新增
+  return http.requestDelete(apiUrl + '/cms/page/del/' + pageId)
+}
+
+/**
  * 编辑页面信息
  * @param params
  * @returns {Promise | Promise<unknown>}

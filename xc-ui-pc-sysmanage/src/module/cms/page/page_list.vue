@@ -37,12 +37,17 @@
       </el-table-column>
       <el-table-column prop="pageCreateTime" label="创建人" width="250">
       </el-table-column>
-      <el-table-column label="操作" width="80">
+      <el-table-column label="操作" width="120">
         <template slot-scope="page">
           <el-button
             size="small" type="text"
             @click="edit(page.row.pageId)">编辑
-            {{page.row.pageId}}
+            <!--            {{page.row.pageId}}-->
+          </el-button>
+          <el-button
+            size="small" type="text"
+            @click="del(page.row.pageId)">删除
+            <!--            {{page.row.pageId}}-->
           </el-button>
         </template>
       </el-table-column>
@@ -104,6 +109,27 @@ export default {
           page: this.params.page,
           siteId: this.params.siteId
         }
+      })
+    },
+    // 删除
+    del: function (pageId) {
+      console.log(pageId)
+      this.$confirm('确认删除吗？', '提示', {}).then(() => {
+        cmsApi.page_del(pageId).then((res) => {
+          console.log(res)
+          if (res.success) {
+            this.$message({
+              type: 'success',
+              message: '删除成功'
+            })
+            this.query()
+          } else {
+            this.$message({
+              type: 'error',
+              message: '删除失败'
+            })
+          }
+        })
       })
     }
   },

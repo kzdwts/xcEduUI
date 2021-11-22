@@ -108,8 +108,10 @@ export default {
                   type: 'success'
                 })
                 this.$refs['pageForm'].resetFields()
+              } else if (res.msg) {
+                this.$message.error(res.msg)
               } else {
-                this.$message.error('提交失败')
+                this.$message.error('操作失败')
               }
             })
           })

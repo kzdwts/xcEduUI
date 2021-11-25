@@ -35,6 +35,8 @@
       </el-table-column>
       <el-table-column prop="pagePhysicalPath" label="物理路径" width="250">
       </el-table-column>
+      <el-table-column prop="dataUrl" label="数据url" width="250">
+      </el-table-column>
       <el-table-column prop="pageCreateTime" label="创建人" width="250">
       </el-table-column>
       <el-table-column label="操作" width="120">

@@ -29,15 +29,15 @@
       </el-table-column>
       <el-table-column prop="pageAliase" label="别名" width="120">
       </el-table-column>
-      <el-table-column prop="pageType" label="页面类型" width="150">
+      <el-table-column prop="pageType" label="页面类型" width="100">
       </el-table-column>
-      <el-table-column prop="pageWebPath" label="访问路径" width="250">
+      <el-table-column prop="pageWebPath" label="访问路径" width="200">
       </el-table-column>
       <el-table-column prop="pagePhysicalPath" label="物理路径" width="250">
       </el-table-column>
       <el-table-column prop="dataUrl" label="数据url" width="250">
       </el-table-column>
-      <el-table-column prop="pageCreateTime" label="创建人" width="250">
+      <el-table-column prop="pageCreateTime" label="创建时间" :formatter="dateFormat" width="150">
       </el-table-column>
       <el-table-column label="操作" width="120">
         <template slot-scope="page">
@@ -102,6 +102,14 @@ export default {
     changePage: function (page) {
       this.params.page = page
       this.query()
+    },
+    // 日期格式化
+    dateFormat: function (row, column) {
+      var date = row[column.property]
+      if (date == null || date == undefined) {
+        return '';
+      }
+      return date.substring(0,10);
     },
     // 编辑
     edit: function (pageId) {

@@ -39,7 +39,7 @@
       </el-table-column>
       <el-table-column prop="pageCreateTime" label="创建时间" :formatter="dateFormat" width="150">
       </el-table-column>
-      <el-table-column label="操作" width="120">
+      <el-table-column label="操作" width="220">
         <template slot-scope="page">
           <el-button
             size="small" type="text"
@@ -50,6 +50,10 @@
             size="small" type="text"
             @click="del(page.row.pageId)">删除
             <!--            {{page.row.pageId}}-->
+          </el-button>
+          <el-button
+            size="small" type="text"
+            @click="preview(page.row.pageId)">页面预览
           </el-button>
         </template>
       </el-table-column>
@@ -141,6 +145,10 @@ export default {
           }
         })
       })
+    },
+    // 页面预览
+    preview: function (pageId) {
+      window.open("http://www.xuecheng.com/cms/preview/" + pageId)
     }
   },
   created() { // created是页面还没有渲染之前，执行的动作

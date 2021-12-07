@@ -48,6 +48,16 @@ export const page_del = (pageId) => {
 }
 
 /**
+ * 发布页面
+ * @param params
+ * @returns {Promise | Promise<unknown>}
+ */
+export const page_postPage = (pageId) => {
+  // 调用接口发布
+  return http.requestPost(apiUrl + '/cms/page/postPage/' + pageId)
+}
+
+/**
  * 编辑页面信息
  * @param params
  * @returns {Promise | Promise<unknown>}

@@ -1,8 +1,6 @@
 # xc-ui-pc-teach
 学成在线教学管理前端工程
 
-# my-project2
-
 > A Vue.js project
 
 ## Build Setup

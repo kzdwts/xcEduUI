@@ -21,3 +21,9 @@ $ npm run generate
 
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
 
+# 注意事项
+* node 需要使用8.10.0版本
+```shell
+$ nvm install 8.10.0
+$ nvm use 8.10.0
+```

@@ -2,7 +2,7 @@
   "name": "xc-portal",
   "version": "1.0.0",
   "description": "xc-portal",
-  "author": "mrt_0607@126.com",
+  "author": "kangyong_wts@126.com",
   "private": true,
   "dependencies": {
     "@koa/cors": "^2.2.1",

@@ -51,7 +51,9 @@ const router = new VueRouter({
 
 
 router.beforeEach((to, from, next) => {
+  // debugger
   if(openAuthenticate){
+    // debugger
 
     // console.log(to)
     // console.log(from)
@@ -72,6 +74,7 @@ router.beforeEach((to, from, next) => {
 
       //请求获取jwt
       systemApi.getjwt().then((res)=>{
+        debugger
         if(res.success){
           let jwt = res.jwt;
           let activeUser = utilApi.getUserInfoFromJwt(jwt)
@@ -130,7 +133,7 @@ axios.interceptors.request.use(function (config) {
   return Promise.reject(error);
 });
 // 响应拦截
-/*axios.interceptors.response.use(data => {
+axios.interceptors.response.use(data => {
   console.log("data=")
   console.log(data)
   if(data && data.data){
@@ -148,7 +151,8 @@ axios.interceptors.request.use(function (config) {
     }
   }
   return data
-})*/
+})
+
 /*
  //axios请求超时设置
 axios.defaults.retry = 2;
